@@ -9,19 +9,12 @@ output:
     number_sections: true
     latex_engine: xelatex
 fontsize: 11pt
-mainfont: "Lato"
+mainfont: "Calibri"
 geometry: margin=1in
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-	echo = FALSE,
-	message = FALSE,
-	warning = FALSE
-)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(tidyverse)
 library(kableExtra)
 library(ggplot2)
@@ -31,8 +24,7 @@ library(readr)
 
 ```
 
-# Servicios de Capacitación y Formación
-
+1. Servicios de Capacitación y Formación
 Procesos de Capacitación
 
 ```{r capacitacion, echo=FALSE}
@@ -41,7 +33,7 @@ kable(capacitacion, caption = "Personas capacitadas por trimestre") %>%
   kable_styling(latex_options = "hold_position")
 ```
 
-## Campos de Conocimiento
+Campos de Conocimiento
 
 ```{r campos-conocimiento, echo=FALSE}
 campos <- read_csv("datos/campos_conocimiento.csv")
@@ -52,7 +44,7 @@ ggplot(campos, aes(x = reorder(Campo, Porcentaje), y = Porcentaje)) +
   theme_minimal()
 ```
 
-# Perfil de los Participantes
+2. Perfil de los Participantes
 
 ```{r perifl-participantes, echo=FALSE}
 perfil <- read_csv("datos/perfil.csv")
@@ -60,7 +52,7 @@ kable(perfil, caption = "Distribución de usuarios por características demográ
   kable_styling(latex_options = "hold_position")
 ```
 
-# Ferias de Empleo
+3. Ferias de Empleo
 
 ```{r ferias-empleo, echo=FALSE}
 ferias <- read_csv("datos/ferias.csv")
@@ -68,7 +60,7 @@ kable(ferias, caption = "Resumen de ferias de empleo 2024") %>%
   kable_styling(latex_options = "hold_position")
 ```
 
-# Bolsa Metropolitana de Empleo
+4. Bolsa Metropolitana de Empleo
 
 ```{r bme, echo=FALSE}
 bolsa <- read_csv("datos/bolsa.csv")
@@ -76,7 +68,7 @@ kable(bolsa, caption = "Indicadores de la Bolsa Metropolitana de Empleo") %>%
   kable_styling(latex_options = "hold_position")
 ```
 
-# Escuela Taller Quito II
+5. Escuela Taller Quito II
 
 ```{r escuela-taller, echo=FALSE}
 escuela <- read_csv("datos/escuela_taller.csv")
@@ -87,7 +79,7 @@ ggplot(escuela, aes(x = reorder(Oficio, Beneficiarios), y = Beneficiarios)) +
   theme_minimal()
 ```
 
-# Proyectos Especiales
+6. Proyectos Especiales
 
 Emprendimiento: 100 beneficiarios, 33% mujeres, 67% hombres.
 
@@ -95,15 +87,16 @@ Escolaridad: 83 niños/as beneficiados, 69 familias.
 
 Capacitación vocacional: 106 personas, incluyendo 10 extranjeras.
 
-# Satisfacción de Usuarios
+7. Satisfacción de Usuarios
 
 ```{r satisfaccion-usuarios, echo=FALSE}
 satisfaccion <- tibble(
-Nivel = c("Muy satisfactorio", "Satisfactorio", "Regular", "Poco",
-"Nada"), Porcentaje = c(77.47, 19.80, 2.32, 0.30, 0.10) )
+  Nivel = c("Muy satisfactorio", "Satisfactorio", "Regular", "Poco", "Nada"),
+  Porcentaje = c(77.47, 19.80, 2.32, 0.30, 0.10)
+)
 
-ggplot(satisfaccion, aes(x = reorder(Nivel, Porcentaje), y =
-Porcentaje)) + geom_col(fill = "#7CAE00") + coord_flip() + labs(title =
-"Nivel de satisfacción de usuarios", x = "", y = "%") + theme_minimal()
-
-```
+ggplot(satisfaccion, aes(x = reorder(Nivel, Porcentaje), y = Porcentaje)) +
+  geom_col(fill = "#7CAE00") +
+  coord_flip() +
+  labs(title = "Nivel de satisfacción de usuarios", x = "", y = "%") +
+  theme_minimal()
