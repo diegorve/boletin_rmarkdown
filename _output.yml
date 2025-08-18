@@ -1,0 +1,5 @@
+bookdown::pdf_document2:
+  latex_engine: xelatex
+  includes:
+    in_header: header.tex
+  keep_tex: true

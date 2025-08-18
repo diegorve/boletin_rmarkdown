@@ -1,0 +1,5 @@
+rmd_files: [
+  "index.Rmd",
+  "01_resumen.Rmd",
+  "02_cuerpo.Rmd"
+]

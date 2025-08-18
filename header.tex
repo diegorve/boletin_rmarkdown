@@ -1,0 +1,20 @@
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Captura el título del capítulo
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+% Encabezado dinámico
+\fancyhead[L]{\leftmark}
+\fancyhead[C]{}
+\fancyhead[R]{\today}
+
+% Pie de página
+\fancyfoot[L]{Confidencial}
+\fancyfoot[C]{}
+\fancyfoot[R]{Página \thepage}
+
+% Líneas decorativas
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+

@@ -1,0 +1,16 @@
+---
+title: "Boletín de Empleo"
+author: "Diego"
+date: "`r Sys.Date()`"
+documentclass: book
+site: bookdown::bookdown_site
+---
+
+
+\thispagestyle{empty}
+
+# Portada
+
+Aquí va el resumen institucional, logotipo, etc.
+
+\newpage
