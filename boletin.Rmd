@@ -1,0 +1,106 @@
+---
+title: "Boletín Estadístico Mensual"
+author: "Unidad de Análisis"
+date: "`r format(Sys.Date(), '%d de %B de %Y')`"
+output:
+  pdf_document:
+    toc: true
+    number_sections: true
+    latex_engine: xelatex
+    keep_tex: false
+fontsize: 11pt
+geometry: margin=2.5cm
+mainfont: "Lato"
+---
+
+```{r setup, include=FALSE}
+#carga de librerias
+library(readr)
+library(dplyr)
+library(kableExtra)
+library(ggplot2)
+
+```
+
+
+# Servicios de Capacitación y Formación
+
+Procesos de Capacitación
+
+```{r capacitacion, echo=FALSE, message=FALSE, warning=FALSE}
+capacitacion <- read_csv("data/capacitacion.csv")
+kable(capacitacion, caption = "Personas capacitadas por trimestre") %>%
+  kable_styling(latex_options = c("striped", "hold_position"), font_size = 10)
+```
+
+## Campos de Conocimiento
+
+```{r campos-conocimiento, echo=FALSE, message=FALSE, warning=FALSE}
+campos <- read_csv("data/campos_conocimiento.csv")
+ggplot(campos, aes(x = reorder(Campo, Porcentaje), y = Porcentaje)) +
+  geom_col(fill = "#0073C2FF") +
+  coord_flip() +
+  labs(title = "Distribución por campo de conocimiento", x = "", y = "%") +
+  theme_minimal(base_size = 10) +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5))
+```
+
+# Perfil de los Participantes
+
+```{r perifl-participantes, echo=FALSE, message=FALSE, warning=FALSE}
+perfil <- read_csv("data/perfil.csv")
+kable(perfil, caption = "Distribución de usuarios por características demográficas") %>%
+  kable_styling(latex_options = c("striped", "hold_position"), font_size = 10)
+```
+
+# Ferias de Empleo
+
+```{r ferias-empleo, echo=FALSE, message=FALSE, warning=FALSE}
+ferias <- read_csv("data/ferias.csv")
+kable(ferias, caption = "Resumen de ferias de empleo 2024") %>%
+  kable_styling(latex_options = c("striped", "hold_position"), font_size = 10)
+```
+
+# Bolsa Metropolitana de Empleo
+
+```{r bme, echo=FALSE, message=FALSE, warning=FALSE}
+bolsa <- read_csv("data/bolsa.csv")
+kable(bolsa, caption = "Indicadores de la Bolsa Metropolitana de Empleo") %>%
+  kable_styling(latex_options = c("striped", "hold_position"), font_size = 10)
+```
+
+# Escuela Taller Quito II
+
+```{r escuela-taller, echo=FALSE, message=FALSE, warning=FALSE}
+escuela <- read_csv("data/escuela_taller.csv")
+ggplot(escuela, aes(x = reorder(Oficio, Beneficiarios), y = Beneficiarios)) +
+  geom_col(fill = "#F8766D") +
+  coord_flip() +
+  labs(title = "Beneficiarios por oficio - Escuela Taller Quito II", x = "", y = "Personas") +
+  theme_minimal(base_size = 10) +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5))
+```
+
+# Proyectos Especiales
+
+Emprendimiento: 100 beneficiarios, 33% mujeres, 67% hombres.
+
+Escolaridad: 83 niños/as beneficiados, 69 familias.
+
+Capacitación vocacional: 106 personas, incluyendo 10 extranjeras.
+
+# Satisfacción de Usuarios
+
+```{r satisfaccion-usuarios, echo=FALSE, message=FALSE, warning=FALSE}
+satisfaccion <- tibble(
+Nivel = c("Muy satisfactorio", "Satisfactorio", "Regular", "Poco", "Nada"),
+Porcentaje = c(77.47, 19.80, 2.32, 0.30, 0.10))
+
+ggplot(satisfaccion, aes(x = reorder(Nivel, Porcentaje), y = Porcentaje)) +
+  geom_col(fill = "#7CAE00") +
+  coord_flip() +
+  labs(title = "Nivel de satisfacción de usuarios", x = "", y = "%") +
+  theme_minimal(base_size = 10) +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5))
+
+```
